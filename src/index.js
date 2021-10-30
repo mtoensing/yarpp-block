@@ -3,12 +3,15 @@ import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, BlockControls } from '@wordpress/block-editor';
 import ServerSideRender from '@wordpress/server-side-render';
 import { RangeControl } from '@wordpress/components';
-import { ToolbarGroup, ToolbarButton, ToggleControl,Panel, PanelBody, PanelRow } from '@wordpress/components';
+import { ToolbarGroup, ToolbarButton, SelectControl, ToggleControl ,Panel, PanelBody, PanelRow } from '@wordpress/components';
 
 registerBlockType('yarpp-block/list', {
   title: __('YARPP Block', 'yarpp_block'),
   category: 'layout',
   icon: 'share-alt',
+  supports: {
+		align: ['wide', 'full']
+	},
   keywords: [ 'YARPP Block' ],
   attributes: {
 		use_cache: {
@@ -19,6 +22,13 @@ registerBlockType('yarpp-block/list', {
       type: 'number',
       default: 0,
     },
+    blocktype: {
+      type: 'string',
+      default: 'related',
+    },
+    align: {
+      type: 'string',
+    }
 	},
   edit: function(props) {
     return (
@@ -33,6 +43,17 @@ registerBlockType('yarpp-block/list', {
                 checked={ props.attributes.use_cache }
                 onChange={ () => props.setAttributes( {  use_cache: ! props.attributes.use_cache } ) }
             />
+            </PanelRow>
+            <PanelRow>
+            <SelectControl
+							label="Select Control"
+							value={ props.attributes.blocktype }
+							options={ [
+								{ value: 'related', label: 'Related' },
+								{ value: 'latest', label: 'Latest' },
+							] }
+							onChange={ ( blocktype ) => props.setAttributes( { blocktype: blocktype } ) }
+						/>
           </PanelRow>
         </PanelBody>
       </Panel>

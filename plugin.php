@@ -78,6 +78,13 @@ function register_block() {
           'default' => 0,
           '_builtIn' => true,
         ),
+        'blocktype' => array(
+          'type' => 'string',
+          'default' => 'related',
+        ),
+        'align' => array(
+          'type' => 'string',
+        ),
     )]);
 }
 
@@ -97,15 +104,15 @@ function render_callback($attributes, $content) {
           set_transient( 'yarpp_block_transient_link', $yarpp_block_transient_link, 3600 );
       }
     } else {
-      $yarpp_block_transient_link = getBlocks();
+      $yarpp_block_transient_link = getBlocks($attributes['blocktype']);
     }
 
     return $yarpp_block_transient_link;
     
 }
 
-function getBlocks() {
-  $html = '';
+function getBlocks($blocktype) {
+
   $cpid = get_the_ID();
   $excludes[] = $cpid;
   $related_posts_array = array();
@@ -115,9 +122,10 @@ function getBlocks() {
   } else {
     return;
   }
-  if(count($related_posts) > 2){
-    $relatedposts_html = '<h3 class="alignwide" id="related-posts-yarpp-block">'. __( "Related posts",'yarpp-block' ). '</h3>';
-    $relatedposts_html .= '<ul class="wp-block-latest-posts__list is-grid columns-3 alignwide wp-block-latest-posts">';
+
+  if( count( $related_posts ) > 2 ){
+   
+    $relatedposts_html = '<ul class="alignwide wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
 
     foreach ($related_posts as $posts) {
       $related_posts_array[] = $posts->ID;
@@ -138,8 +146,8 @@ function getBlocks() {
   );
   
   $the_query = new \WP_Query($args); 
-  $latestposts_html = '<h3 class="alignwide" id="latest-posts-yarpp-block">Latest Posts</h3>';
-  $latestposts_html .= '<ul class="wp-block-latest-posts__list is-grid columns-3 alignwide wp-block-latest-posts">';
+  $latestposts_html = '<ul class="alignwide wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
+
   while ($the_query->have_posts()) :
     $the_query->the_post();
     if (has_post_thumbnail()):
@@ -150,7 +158,12 @@ function getBlocks() {
   $latestposts_html .= '</ul>';
   wp_reset_postdata(); 
 
-  return $latestposts_html . $relatedposts_html;
+  if($blocktype == 'latest'){
+    return $latestposts_html;
+  } else {
+    return $relatedposts_html;
+  }
+
   
 }
 
