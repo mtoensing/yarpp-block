@@ -97,32 +97,23 @@ function register_block() {
 function render_callback($attributes, $content) {
     //add only if block is used in this post.
     add_filter('render_block', __NAMESPACE__ . '\\filter_block', 10, 2);
-  
-    if($attributes['use_cache'] == true){
-      if ( false === ( $shortscore_transient_link = get_transient( 'yarpp_block_transient_link' ) ) ) {
-          // It wasn't there, so regenerate the data and save the transient
-          $yarpp_block_transient_link = getBlocks();
-          set_transient( 'yarpp_block_transient_link', $yarpp_block_transient_link, 3600 );
-      }
-    } else {
-      $yarpp_block_transient_link = getBlocks($attributes['blocktype'], $attributes['align']);
-    }
 
-    return $yarpp_block_transient_link;
+    $block = getBlocks($attributes['blocktype'], $attributes['align']);
+    
+    return $block;
     
 }
 
 function getBlocks($blocktype,$align) {
 
   $alignclass = '';
+  $cpid = get_the_ID();
+  $excludes[] = $cpid;
+  $related_posts_array = array();
 
   if($align != '') {
     $alignclass = 'align' . $align;
   }
-
-  $cpid = get_the_ID();
-  $excludes[] = $cpid;
-  $related_posts_array = array();
 
   if (function_exists('yarpp_get_related')) {
     $related_posts = yarpp_get_related(array('limit' => 3), $cpid);
@@ -174,14 +165,18 @@ function getBlocks($blocktype,$align) {
 
 function get_list_item($pid){
   $html = '<li>';
+  $is_backend = defined('REST_REQUEST') && true === REST_REQUEST && 'edit' === filter_input( INPUT_GET, 'context', FILTER_SANITIZE_STRING );
   $size = "yarpp";
   $size_retina = "yarpp-retina"; 
-  $permalink = get_the_permalink($pid); 
+  $href = 'href="' . get_the_permalink($pid) . '"'; 
+  if($is_backend){
+    $href = '';
+  }
   $alt = get_post_meta( get_post_thumbnail_id($pid), '_wp_attachment_image_alt', true );
   $title = get_the_title($pid);
   $img = '<img loading="lazy" alt="' . $alt . '" width="300" height="130" src="' . get_the_post_thumbnail_url($pid,$size) .'" srcset="' . get_the_post_thumbnail_url($pid,$size_retina) .' 2x">';
-  $html .= '<div class="wp-block-latest-posts__featured-image"><a href="' . $permalink . '">' . $img . '</a></div>';
-  $html .= '<a href="' . $permalink . '">' . $title . '</a>';
+  $html .= '<div class="wp-block-latest-posts__featured-image"><a '. $href .' >' . $img . '</a></div>';
+  $html .= '<a ' . $href . ' >' . $title . '</a>';
   $html .= '</li>';
 
   return $html;
