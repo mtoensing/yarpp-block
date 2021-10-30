@@ -111,13 +111,20 @@ function getBlocks() {
   $related_posts_array = array();
 
   if (function_exists('yarpp_get_related')) {
-    $related_posts = yarpp_get_related(array(), $cpid);
+    $related_posts = yarpp_get_related(array('limit' => 3), $cpid);
   } else {
     return;
   }
+  if(count($related_posts) > 2){
+    $relatedposts_html = '<h3 class="alignwide" id="related-posts-yarpp-block">'. __("Related posts",'yarpp-block'). '</h3>';
+    $relatedposts_html .= '<ul class="wp-block-latest-posts__list is-grid columns-3 alignwide wp-block-latest-posts">';
 
-  foreach ($related_posts as $posts) {
-    $related_posts_array[] = $posts->ID;
+    foreach ($related_posts as $posts) {
+      $related_posts_array[] = $posts->ID;
+      $relatedposts_html .= get_list_item($posts->ID);
+    }
+
+    $relatedposts_html .= '</ul>';
   }
 
   $excludes = array_merge($excludes, $related_posts_array);
@@ -125,62 +132,39 @@ function getBlocks() {
   $args = array(
           'post_type'      => 'post',
           'post_status' 	 => 'publish',
-          'posts_per_page' => '4',
+          'posts_per_page' => '3',
           'post__not_in'   => $excludes,
           'order'          => 'DESC'
   );
-  $i = 0;
-  $the_query = new \WP_Query($args); 
   
-  $latestposts_html = '<ul class="wp-block-latest-posts__list is-grid columns-3 alignwide wp-block-latest-posts">';
+  $the_query = new \WP_Query($args); 
+  $latestposts_html = '<h3 class="alignwide" id="latest-posts-yarpp-block">Latest Posts</h3>';
+  $latestposts_html .= '<ul class="wp-block-latest-posts__list is-grid columns-3 alignwide wp-block-latest-posts">';
   while ($the_query->have_posts()) :
-    
     $the_query->the_post();
     if (has_post_thumbnail()):
-      $latestposts_html .= '<li>';
-      $pid = get_the_ID();
-      $size = "yarpp";
-      $size_retina = "yarpp-retina"; 
-      $permalink = get_the_permalink(); 
-      $title = get_the_title();
-      $img = '<img loading="lazy" alt="' . get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) . '" width="300" height="130" src="' . get_the_post_thumbnail_url($pid,$size) .'" srcset="' . get_the_post_thumbnail_url($pid,$size_retina) .' 2x">';
-      $latestposts_html .= '<div class="wp-block-latest-posts__featured-image"><a href="' . $permalink . '">' . $img . '</a></div>';
-      $latestposts_html .= '<a href="' . $permalink . '">' . $title . '</a>';
-      $i++;
-      $latestposts_html .= '</li>';
+      $latestposts_html .= get_list_item(get_the_ID());
     endif; 
-    if( $i > 2 ) { break; } 
-    
   endwhile; 
+
   $latestposts_html .= '</ul>';
   wp_reset_postdata(); 
 
-
-  return $latestposts_html .'
+  return $latestposts_html . $relatedposts_html;
   
-  
-  <ul class="wp-block-latest-posts__list is-grid columns-3 alignwide wp-block-latest-posts">
-    <li><a href="http://localhost/2022-testartikel/">2022 Test</a></li>
-    <li><div class="wp-block-latest-posts__featured-image"><a href="http://localhost/anbernic-handheld-einsteiger-tutorial/"><img width="260" height="113" src="https://marc.tv/media/2021/05/anbernic-faq-tutorial-260x113.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="FAQ: Anbernic Tutorial" loading="lazy" style="" srcset="https://marc.tv/media/2021/05/anbernic-faq-tutorial-260x113.jpg 260w, https://marc.tv/media/2021/05/anbernic-faq-tutorial-510x222.jpg 510w, https://marc.tv/media/2021/05/anbernic-faq-tutorial-1568x683.jpg 1568w, https://marc.tv/media/2021/05/anbernic-faq-tutorial-1536x669.jpg 1536w, https://marc.tv/media/2021/05/anbernic-faq-tutorial-1416x617.jpg 1416w, https://marc.tv/media/2021/05/anbernic-faq-tutorial-460x200.jpg 460w, https://marc.tv/media/2021/05/anbernic-faq-tutorial-920x400.jpg 920w, https://marc.tv/media/2021/05/anbernic-faq-tutorial-1320x575.jpg 1320w, https://marc.tv/media/2021/05/anbernic-faq-tutorial.jpg 1920w" sizes="(max-width: 260px) 100vw, 260px"></a></div><a href="http://localhost/anbernic-handheld-einsteiger-tutorial/">Anbernic Handheld Einsteiger Tutorial</a></li>
-    <li><div class="wp-block-latest-posts__featured-image"><a href="http://localhost/brieftasche-mit-apple-airtag-fach/"><img width="260" height="113" src="https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach-260x113.jpg" class="attachment-thumbnail size-thumbnail wp-post-image" alt="Brieftasche mit extra Fach für den AirTag" loading="lazy" style="" srcset="https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach-260x113.jpg 260w, https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach-510x222.jpg 510w, https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach-1568x683.jpg 1568w, https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach-1536x669.jpg 1536w, https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach-1416x617.jpg 1416w, https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach-460x200.jpg 460w, https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach-920x400.jpg 920w, https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach-1320x575.jpg 1320w, https://marc.tv/media/2021/05/portemonnaie-mit-airtag-fach.jpg 1920w" sizes="(max-width: 260px) 100vw, 260px"></a></div><a href="http://localhost/brieftasche-mit-apple-airtag-fach/">Gibt es eine Brieftasche mit AirTag Fach?</a></li>
-  </ul>';
 }
 
-
-function get_list_item(){
-
-  $html .= '<li>';
-  $pid = get_the_ID();
+function get_list_item($pid){
+  $html = '<li>';
   $size = "yarpp";
   $size_retina = "yarpp-retina"; 
-  $permalink = get_the_permalink(); 
-  $title = get_the_title();
-  $img = '<img loading="lazy" alt="' . get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) . '" width="300" height="130" src="' . get_the_post_thumbnail_url($pid,$size) .'" srcset="' . get_the_post_thumbnail_url($pid,$size_retina) .' 2x">';
+  $permalink = get_the_permalink($pid); 
+  $alt = get_post_meta( get_post_thumbnail_id($pid), '_wp_attachment_image_alt', true );
+  $title = get_the_title($pid);
+  $img = '<img loading="lazy" alt="' . $alt . '" width="300" height="130" src="' . get_the_post_thumbnail_url($pid,$size) .'" srcset="' . get_the_post_thumbnail_url($pid,$size_retina) .' 2x">';
   $html .= '<div class="wp-block-latest-posts__featured-image"><a href="' . $permalink . '">' . $img . '</a></div>';
   $html .= '<a href="' . $permalink . '">' . $title . '</a>';
-  $i++;
   $html .= '</li>';
-
 
   return $html;
 }
