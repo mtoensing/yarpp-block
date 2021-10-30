@@ -104,14 +104,20 @@ function render_callback($attributes, $content) {
           set_transient( 'yarpp_block_transient_link', $yarpp_block_transient_link, 3600 );
       }
     } else {
-      $yarpp_block_transient_link = getBlocks($attributes['blocktype']);
+      $yarpp_block_transient_link = getBlocks($attributes['blocktype'],$attributes['align']);
     }
 
     return $yarpp_block_transient_link;
     
 }
 
-function getBlocks($blocktype) {
+function getBlocks($blocktype,$align) {
+
+  $alignclass = '';
+
+  if($align != '') {
+    $alignclass = 'align' . $align;
+  }
 
   $cpid = get_the_ID();
   $excludes[] = $cpid;
@@ -125,7 +131,7 @@ function getBlocks($blocktype) {
 
   if( count( $related_posts ) > 2 ){
    
-    $relatedposts_html = '<ul class="alignwide wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
+    $relatedposts_html = '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
 
     foreach ($related_posts as $posts) {
       $related_posts_array[] = $posts->ID;
@@ -146,7 +152,7 @@ function getBlocks($blocktype) {
   );
   
   $the_query = new \WP_Query($args); 
-  $latestposts_html = '<ul class="alignwide wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
+  $latestposts_html = '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
 
   while ($the_query->have_posts()) :
     $the_query->the_post();
