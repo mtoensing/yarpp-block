@@ -37,12 +37,6 @@ registerBlockType('yarpp-block/list', {
       <Panel>
         <PanelBody>
           <PanelRow>
-          <ToggleControl
-                label={__('Use cache', 'yarpp-block')}
-                help={__('Cache the result for one hour', 'yarpp-block')}
-                checked={ props.attributes.use_cache }
-                onChange={ () => props.setAttributes( {  use_cache: ! props.attributes.use_cache } ) }
-            />
             </PanelRow>
             <PanelRow>
             <SelectControl
