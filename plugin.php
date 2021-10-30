@@ -105,7 +105,7 @@ function render_callback($attributes, $content) {
           set_transient( 'yarpp_block_transient_link', $yarpp_block_transient_link, 3600 );
       }
     } else {
-      $yarpp_block_transient_link = getBlocks($attributes['blocktype'],$attributes['align']);
+      $yarpp_block_transient_link = getBlocks($attributes['blocktype'], $attributes['align']);
     }
 
     return $yarpp_block_transient_link;
@@ -165,13 +165,11 @@ function getBlocks($blocktype,$align) {
   $latestposts_html .= '</ul>';
   wp_reset_postdata(); 
 
-  if($blocktype == 'latest'){
+  if( $blocktype == 'latest' ){
     return $latestposts_html;
   } else {
     return $relatedposts_html;
-  }
-
-  
+  } 
 }
 
 function get_list_item($pid){
