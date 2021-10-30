@@ -116,7 +116,7 @@ function getBlocks() {
     return;
   }
   if(count($related_posts) > 2){
-    $relatedposts_html = '<h3 class="alignwide" id="related-posts-yarpp-block">'. __("Related posts",'yarpp-block'). '</h3>';
+    $relatedposts_html = '<h3 class="alignwide" id="related-posts-yarpp-block">'. __( "Related posts",'yarpp-block' ). '</h3>';
     $relatedposts_html .= '<ul class="wp-block-latest-posts__list is-grid columns-3 alignwide wp-block-latest-posts">';
 
     foreach ($related_posts as $posts) {
@@ -171,10 +171,6 @@ function get_list_item($pid){
 
 function filter_block($block_content, $block) {
   $className = '';
-
-  if ($block['blockName'] !== 'core/heading') {
-      return $block_content;
-  }
 
   return $block_content;
 }
