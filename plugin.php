@@ -84,6 +84,7 @@ function register_block() {
         ),
         'align' => array(
           'type' => 'string',
+          'default' => '',
         ),
     )]);
 }
