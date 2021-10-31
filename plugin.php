@@ -110,6 +110,7 @@ function getBlocks($blocktype,$align) {
   $cpid = get_the_ID();
   $excludes[] = $cpid;
   $related_posts_array = array();
+  $relatedposts_html = '';
 
   if($align != '') {
     $alignclass = 'align' . $align;
@@ -122,23 +123,24 @@ function getBlocks($blocktype,$align) {
   }
 
   if( count( $related_posts ) > 2 ){
-   
     $relatedposts_html = '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
-
     foreach ($related_posts as $posts) {
       $related_posts_array[] = $posts->ID;
       $relatedposts_html .= get_list_item($posts->ID);
     }
-
     $relatedposts_html .= '</ul>';
   }
+
+  if( $blocktype == 'related' ){
+    return $relatedposts_html;
+  } 
 
   $excludes = array_merge($excludes, $related_posts_array);
 
   $args = array(
           'post_type'      => 'post',
           'post_status' 	 => 'publish',
-          'posts_per_page' => '3',
+          'posts_per_page' => '6',
           'post__not_in'   => $excludes,
           'order'          => 'DESC'
   );
@@ -146,11 +148,16 @@ function getBlocks($blocktype,$align) {
   $the_query = new \WP_Query($args); 
   $latestposts_html = '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
 
+  $i = 0;
   while ($the_query->have_posts()) :
+    
     $the_query->the_post();
     if (has_post_thumbnail()):
       $latestposts_html .= get_list_item(get_the_ID());
+      $i++;
     endif; 
+    if( $i > 2 ) { break; } 
+    
   endwhile; 
 
   $latestposts_html .= '</ul>';
@@ -158,9 +165,8 @@ function getBlocks($blocktype,$align) {
 
   if( $blocktype == 'latest' ){
     return $latestposts_html;
-  } else {
-    return $relatedposts_html;
   } 
+
 }
 
 function get_list_item($pid){
