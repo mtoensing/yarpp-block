@@ -36,11 +36,9 @@ registerBlockType('yarpp-block/list', {
     <InspectorControls>
       <Panel>
         <PanelBody>
-          <PanelRow>
-            </PanelRow>
-            <PanelRow>
+            
             <SelectControl
-							label="Select Control"
+							label={ __('YARPP block type', 'yarpp_block') }
 							value={ props.attributes.blocktype }
 							options={ [
 								{ value: 'related', label: 'Related' },
@@ -48,7 +46,7 @@ registerBlockType('yarpp-block/list', {
 							] }
 							onChange={ ( blocktype ) => props.setAttributes( { blocktype: blocktype } ) }
 						/>
-          </PanelRow>
+          
         </PanelBody>
       </Panel>
     </InspectorControls>
