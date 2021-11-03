@@ -43,7 +43,7 @@ registerBlockType('yarpp-block/list', {
 							value={ props.attributes.blocktype }
 							options={ [
 								{ value: 'related', label: __('Related posts (default)', 'yarpp_block') },
-								{ value: 'latest', label: __('Latest posts excluding related posts', 'yarpp_block') },
+								{ value: 'latest', label: __('Latest posts excl. related posts', 'yarpp_block') },
 							] }
 							onChange={ ( blocktype ) => props.setAttributes( { blocktype: blocktype } ) }
 						/>
