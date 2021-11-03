@@ -8,7 +8,7 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Adds a block that lists the yarpp. I implemented a block that uses YARPP functions. Is is an mvp and very messy but you get the point. I has another “mode” that displays latest posts that are not part of the current page and related posts. That allows to show two instances of this block: one with yarpp and one with yarpp-less latest posts.
+Adds a block that lists yarpp related posts. I implemented a block that uses YARPP functions. Is is an mvp and very messy but you get the point. I has another “mode” that displays latest posts that are not part of the current page and related posts. That allows to show two instances of this block: one with yarpp and one with yarpp-less latest posts.
 
 == Description ==
 
