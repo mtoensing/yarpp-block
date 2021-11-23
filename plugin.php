@@ -38,16 +38,8 @@ function init() {
       array( ),
       filemtime( plugin_dir_path( __FILE__ ) . 'style.css' )
     );
-    /*
-    wp_register_style(
-      'yarpp-block-editor',
-      plugins_url('editor.css', __FILE__),
-      array( 'wp-edit-blocks' ),
-      filemtime(plugin_dir_path(__FILE__) . 'editor.css')
-    );
-    */
 
-    //wp_set_script_translations('yarpp-block-js', 'yarpp-block');
+    wp_set_script_translations('yarpp-block-js', 'yarpp-block');
 }
 
 
@@ -86,6 +78,14 @@ function register_block() {
           'type' => 'string',
           'default' => '',
         ),
+        'headline' => array(
+          'type' => 'string',
+          'default' => 'Related posts',
+        ),
+        'level' => array(
+          'type' => 'string',
+          'default' => 'h3',
+        ),
     )]);
 }
 
@@ -96,13 +96,18 @@ function register_block() {
 
 function render_callback($attributes, $content) {
 
-    $block = getBlocks($attributes['blocktype'], $attributes['align']);
+    $block = getBlocks($attributes);
     
     return $block;
     
 }
 
-function getBlocks($blocktype,$align) {
+function getBlocks( $attributes ) {
+
+  $blocktype = $attributes['blocktype'];
+  $align = $attributes['align'];
+  $headline = $attributes['headline'];
+  $level = $attributes['level'];
 
   $alignclass = '';
   $cpid = get_the_ID();
@@ -120,36 +125,22 @@ function getBlocks($blocktype,$align) {
     return;
   }
 
+  
+  if ( count( $related_posts ) > 2 ){   
 
-    $relatedposts_html = '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
+      if( $headline != '' ) {
+        $relatedposts_html .= '<' . $level . ' class="' . $alignclass .  '">' . $headline . '</' . $level . '>';
+      }
 
-if ( count( $related_posts ) > 2 ){   
+      $relatedposts_html .= '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
 
-    foreach ($related_posts as $posts) {
-      $related_posts_array[] = $posts->ID;
-      $relatedposts_html .= get_list_item($posts->ID);
-    }
+      foreach ($related_posts as $posts) {
+        $related_posts_array[] = $posts->ID;
+        $relatedposts_html .= render_listitem($posts->ID);
+      }
 
-  } else {
-
-    $args = array( 
-        'orderby'               => 'rand',
-        'post_type'             => 'post',
-        'ignore_sticky_posts'   => true,
-        'posts_per_page'        => 3,
-        'post_status'           => 'publish',
-    );
-
-    $loop = new \WP_Query( $args );
-    $random_post_ids = array();
-
-    while ( $loop->have_posts() ) : $loop->the_post();
-      $related_posts_array[] = get_the_ID();
-      $relatedposts_html .= get_list_item(get_the_ID());
-    endwhile;
-  }
-
-  $relatedposts_html .= '</ul>';
+      $relatedposts_html .= '</ul>';
+  } 
 
   if( $blocktype == 'related' ){
     return $relatedposts_html;
@@ -166,14 +157,20 @@ if ( count( $related_posts ) > 2 ){
   );
   
   $the_query = new \WP_Query($args); 
-  $latestposts_html = '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
+
+  $latestposts_html = '';
+
+  if( $headline != '' ) {
+    $latestposts_html .= '<' . $level . ' class="' . $alignclass .  '">' . $headline . '</' . $level . '>';
+  }
+  $latestposts_html .= '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
 
   $i = 0;
   while ($the_query->have_posts()) :
     
     $the_query->the_post();
     if (has_post_thumbnail()):
-      $latestposts_html .= get_list_item(get_the_ID());
+      $latestposts_html .= render_listitem(get_the_ID());
       $i++;
     endif; 
     if( $i > 2 ) { break; } 
@@ -189,13 +186,13 @@ if ( count( $related_posts ) > 2 ){
 
 }
 
-function get_list_item($pid){
+function render_listitem($pid){
   $html = '<li>';
   $is_backend = defined('REST_REQUEST') && true === REST_REQUEST && 'edit' === filter_input( INPUT_GET, 'context', FILTER_SANITIZE_STRING );
   $size = "yarpp";
   $size_retina = "yarpp-retina"; 
   $href = 'href="' . get_the_permalink($pid) . '"'; 
-  if($is_backend){
+  if( $is_backend ){
     $href = '';
   }
   $alt = get_post_meta( get_post_thumbnail_id($pid), '_wp_attachment_image_alt', true );

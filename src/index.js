@@ -2,7 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, BlockControls } from '@wordpress/block-editor';
 import ServerSideRender from '@wordpress/server-side-render';
-import { RangeControl } from '@wordpress/components';
+import { RangeControl, TextControl } from '@wordpress/components';
 import { ToolbarGroup, ToolbarButton, SelectControl, ToggleControl ,Panel, PanelBody, PanelRow } from '@wordpress/components';
 
 registerBlockType('yarpp-block/list', {
@@ -28,15 +28,52 @@ registerBlockType('yarpp-block/list', {
     },
     align: {
       type: 'string',
+    }, 
+    headline: {
+      type: 'string',
+      default: "Related posts"
+    },
+    level: {
+      type: 'string',
+      default: "h3"
     }
 	},
   edit: function(props) {
+
+    function updateHeadline( newValue ) {
+      props.setAttributes( { headline: newValue } );
+    }
+
+    function updateLevel( newValue ) {
+      props.setAttributes( { level: newValue } );
+    }
+
     return (
     <>
     <InspectorControls>
       <Panel>
         <PanelBody>
-            
+            <TextControl 
+              onChange={ updateHeadline }
+              className="headline"
+              label={ __( 'Headline' ) }
+              value={ props.attributes.headline }
+              placeholder={ __( 'Write headline', 'yarpp_block' ) }
+            />
+            <SelectControl
+							label={ __('Heading level', 'yarpp_block') }
+              help= { __('Select the heading level', 'yarpp_block') }
+							value={ props.attributes.level }
+							options={ [
+								{ value: 'h1', label: __('H1', 'yarpp_block') },
+								{ value: 'h2', label: __('H2', 'yarpp_block') },
+                { value: 'h3', label: __('H3', 'yarpp_block') },
+                { value: 'h4', label: __('H4', 'yarpp_block') },
+                { value: 'h5', label: __('H5', 'yarpp_block') },
+                { value: 'h6', label: __('H6', 'yarpp_block') },
+							] }
+							onChange={ updateLevel }
+						/>
             <SelectControl
 							label={ __('YARPP block type', 'yarpp_block') }
               help= { __('Displays 3 posts of the configured type.', 'yarpp_block') }
