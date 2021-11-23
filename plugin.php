@@ -95,8 +95,6 @@ function register_block() {
  */
 
 function render_callback($attributes, $content) {
-    //add only if block is used in this post.
-    add_filter('render_block', __NAMESPACE__ . '\\filter_block', 10, 2);
 
     $block = getBlocks($attributes['blocktype'], $attributes['align']);
     
@@ -122,14 +120,36 @@ function getBlocks($blocktype,$align) {
     return;
   }
 
-  if( count( $related_posts ) > 2 ){
+
     $relatedposts_html = '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
+
+if ( count( $related_posts ) > 2 ){   
+
     foreach ($related_posts as $posts) {
       $related_posts_array[] = $posts->ID;
       $relatedposts_html .= get_list_item($posts->ID);
     }
-    $relatedposts_html .= '</ul>';
+
+  } else {
+
+    $args = array( 
+        'orderby'               => 'rand',
+        'post_type'             => 'post',
+        'ignore_sticky_posts'   => true,
+        'posts_per_page'        => 3,
+        'post_status'           => 'publish',
+    );
+
+    $loop = new \WP_Query( $args );
+    $random_post_ids = array();
+
+    while ( $loop->have_posts() ) : $loop->the_post();
+      $related_posts_array[] = get_the_ID();
+      $relatedposts_html .= get_list_item(get_the_ID());
+    endwhile;
   }
+
+  $relatedposts_html .= '</ul>';
 
   if( $blocktype == 'related' ){
     return $relatedposts_html;
@@ -188,8 +208,3 @@ function get_list_item($pid){
   return $html;
 }
 
-function filter_block($block_content, $block) {
-  $className = '';
-
-  return $block_content;
-}
