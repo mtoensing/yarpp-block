@@ -13,3 +13,8 @@ Adds a block that lists yarpp related posts.
 == Description ==
 
 Adds a block that lists yarpp related posts. 
+
+== Installation ==
+
+1. Upload the plugin files to the `/wp-content/plugins/game-review` directory, or install the plugin through the WordPress plugins screen directly.
+1. Activate the plugin through the 'Plugins' screen in WordPress
