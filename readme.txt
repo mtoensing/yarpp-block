@@ -12,3 +12,4 @@ Adds a block that lists yarpp related posts.
 
 == Description ==
 
+Adds a block that lists yarpp related posts. 
