@@ -8,7 +8,7 @@ import { ToolbarGroup, ToolbarButton, SelectControl ,Panel, PanelBody } from '@w
 registerBlockType('yarpp-block/list', {
   title: __('List YARPP Block', 'yarpp_block'),
   category: 'layout',
-  icon: 'share-alt',
+  icon: 'ellipsis',
   supports: {
 		align: ['wide', 'full']
 	},
@@ -76,11 +76,11 @@ registerBlockType('yarpp-block/list', {
 						/>
             <SelectControl
 							label={ __('YARPP block type', 'yarpp_block') }
-              help= { __('Displays 3 posts of the configured type.', 'yarpp_block') }
+              help= { __('Displays 3 posts of the configured type. ', 'yarpp_block') }
 							value={ props.attributes.blocktype }
 							options={ [
 								{ value: 'related', label: __('Related posts (default)', 'yarpp_block') },
-								{ value: 'latest', label: __('Latest posts excl. related posts', 'yarpp_block') },
+								{ value: 'latest', label: __('Latest posts excluding related posts', 'yarpp_block') },
 							] }
 							onChange={ ( blocktype ) => props.setAttributes( { blocktype: blocktype } ) }
 						/>

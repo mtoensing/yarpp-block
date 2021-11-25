@@ -117,7 +117,7 @@ __webpack_require__.r(__webpack_exports__);
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('yarpp-block/list', {
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('List YARPP Block', 'yarpp_block'),
   category: 'layout',
-  icon: 'share-alt',
+  icon: 'ellipsis',
   supports: {
     align: ['wide', 'full']
   },
@@ -192,14 +192,14 @@ Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('yar
       onChange: updateLevel
     }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
       label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('YARPP block type', 'yarpp_block'),
-      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Displays 3 posts of the configured type.', 'yarpp_block'),
+      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Displays 3 posts of the configured type. ', 'yarpp_block'),
       value: props.attributes.blocktype,
       options: [{
         value: 'related',
         label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Related posts (default)', 'yarpp_block')
       }, {
         value: 'latest',
-        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Latest posts excl. related posts', 'yarpp_block')
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Latest posts excluding related posts', 'yarpp_block')
       }],
       onChange: function onChange(blocktype) {
         return props.setAttributes({
