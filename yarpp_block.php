@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: YARPP Block
+ * Plugin Name: List YARPP Block
  * Plugin URI: https://marc.tv/
  * Description: YARPP Block 
  * Version: 1.0
