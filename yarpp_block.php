@@ -206,9 +206,8 @@ function render_listitem($pid)
     $href = '';
   }
 
-  $alt = get_post_meta(get_post_thumbnail_id($pid), '_wp_attachment_image_alt', true);
   $title = get_the_title($pid);
-  $img = get_the_post_thumbnail($pid, "medium");
+  $img = get_the_post_thumbnail( get_the_ID(), array( 'width' => 350, 'height' => 200) );
   $html .= '<div class="wp-block-latest-posts__featured-image"><a ' . $href . ' >' . $img . '</a></div>';
   $html .= '<a ' . $href . ' >' . $title . '</a>';
   $html .= '</li>';
