@@ -26,6 +26,10 @@ add_action('init', __NAMESPACE__ . '\\register_block');
 /* Init yarpp-block */
 function init()
 {
+
+  add_image_size('yarpp', 460, 200, true); // yarpp image
+  add_image_size('yarpp-retina', 920, 400, true); // yarpp image
+
   wp_register_script(
     'yarpp-block-js',
     plugins_url('build/index.js', __FILE__),
@@ -217,3 +221,4 @@ function render_listitem($pid)
 
   return $html;
 }
+

@@ -2,11 +2,11 @@ import { __ } from '@wordpress/i18n';
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, BlockControls } from '@wordpress/block-editor';
 import ServerSideRender from '@wordpress/server-side-render';
-import { RangeControl, TextControl } from '@wordpress/components';
-import { ToolbarGroup, ToolbarButton, SelectControl, ToggleControl ,Panel, PanelBody, PanelRow } from '@wordpress/components';
+import { TextControl } from '@wordpress/components';
+import { ToolbarGroup, ToolbarButton, SelectControl ,Panel, PanelBody } from '@wordpress/components';
 
 registerBlockType('yarpp-block/list', {
-  title: __('YARPP Block', 'yarpp_block'),
+  title: __('List YARPP Block', 'yarpp_block'),
   category: 'layout',
   icon: 'share-alt',
   supports: {
