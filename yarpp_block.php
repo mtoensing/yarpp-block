@@ -26,10 +26,6 @@ add_action('init', __NAMESPACE__ . '\\register_block');
 /* Init yarpp-block */
 function init()
 {
-
-  add_image_size('yarpp', 460, 200, true); // yarpp image
-  add_image_size('yarpp-retina', 920, 400, true); // yarpp image
-
   wp_register_script(
     'yarpp-block-js',
     plugins_url('build/index.js', __FILE__),
@@ -204,8 +200,6 @@ function render_listitem($pid)
 {
   $html = '<li>';
   $is_backend = defined('REST_REQUEST') && true === REST_REQUEST && 'edit' === filter_input(INPUT_GET, 'context', FILTER_SANITIZE_STRING);
-  $size = "yarpp";
-  $size_retina = "yarpp-retina";
   $href = 'href="' . get_the_permalink($pid) . '"';
 
   if ($is_backend) {
@@ -214,7 +208,7 @@ function render_listitem($pid)
 
   $alt = get_post_meta(get_post_thumbnail_id($pid), '_wp_attachment_image_alt', true);
   $title = get_the_title($pid);
-  $img = '<img loading="lazy" alt="' . $alt . '" width="300" height="130" src="' . get_the_post_thumbnail_url($pid, $size) . '" srcset="' . get_the_post_thumbnail_url($pid, $size_retina) . ' 2x">';
+  $img = get_the_post_thumbnail($pid, "medium");
   $html .= '<div class="wp-block-latest-posts__featured-image"><a ' . $href . ' >' . $img . '</a></div>';
   $html .= '<a ' . $href . ' >' . $title . '</a>';
   $html .= '</li>';
