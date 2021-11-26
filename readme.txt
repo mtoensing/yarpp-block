@@ -3,7 +3,7 @@ Contributors: MarcDK
 Tags: Gutenberg, block, yarpp, fse, related posts
 Requires at least: 5.0
 Donate link: https://marc.tv/out/donate
-Tested up to: 5.9
+Tested up to: 5.8.2
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
