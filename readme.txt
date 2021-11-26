@@ -14,7 +14,25 @@ Adds a block that lists yarpp related posts.
 
 Adds a block that lists yarpp related posts. Also provides an option to display the latest posts without the related posts. Works best with full site editing themes.
 
+= Features =
+
+* Gutenberg column width support.
+* The block is not visible in the frontend if not related posts are found.
+* Minimum html and css that is based on the standard Gutenberg Latest Posts block.
+* Valid HTML output.
+* Inherits the style of your theme for links and headlines.
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/game-review` directory, or install the plugin through the WordPress plugins screen directly.
 1. Activate the plugin through the 'Plugins' screen in WordPress
+
+== Changelog ==
+
+= 1.0 =
+* Inital version.
+
+== Screenshots ==
+1. List YARPP block in Gutenberg editor.
+2. List YARPP block in the Theme Twenty-Twenty-Two
+3. List YARPP block supports custom width.
