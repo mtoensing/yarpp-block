@@ -135,7 +135,7 @@ function getBlocks($attributes)
     $posts = yarpp_get_related(array('limit' => 3), $cpid);
   } else {
     if( $is_backend ){
-      return "<p>" . __('YARPP is not installed.', 'yarpp-block') . "</p>";
+      return '<p class="notice">' . __('YARPP plugin is not installed and activated. ', 'yarpp-block') . '</p>';
     } else {
       return '';
     }
@@ -214,4 +214,3 @@ function render_listitem($pid)
 
   return $html;
 }
-
