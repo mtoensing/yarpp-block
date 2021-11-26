@@ -7,6 +7,7 @@ import { ToolbarGroup, ToolbarButton, SelectControl ,Panel, PanelBody } from '@w
 
 registerBlockType('yarpp-block/list', {
   title: __('List YARPP Block', 'yarpp_block'),
+  description: __( 'Will show 3 related posts or will not appear if no related posts are found.' ),
   category: 'layout',
   icon: 'ellipsis',
   supports: {

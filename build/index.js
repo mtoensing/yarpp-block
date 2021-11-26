@@ -116,6 +116,7 @@ __webpack_require__.r(__webpack_exports__);
 
 Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('yarpp-block/list', {
   title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('List YARPP Block', 'yarpp_block'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Will show 3 related posts or will not appear if no related posts are found.'),
   category: 'layout',
   icon: 'ellipsis',
   supports: {
