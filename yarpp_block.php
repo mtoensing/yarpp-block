@@ -207,7 +207,7 @@ function render_listitem($pid)
   }
 
   $title = get_the_title($pid);
-  $img = get_the_post_thumbnail( get_the_ID(), array( 'width' => 350, 'height' => 200) );
+  $img = get_the_post_thumbnail( $pid );
   $html .= '<div class="wp-block-latest-posts__featured-image"><a ' . $href . ' >' . $img . '</a></div>';
   $html .= '<a ' . $href . ' >' . $title . '</a>';
   $html .= '</li>';
