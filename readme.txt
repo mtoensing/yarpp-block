@@ -4,7 +4,7 @@ Tags: Gutenberg, block, yarpp, fse, related posts
 Requires at least: 5.0
 Donate link: https://marc.tv/out/donate
 Tested up to: 5.8.2
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,6 +28,9 @@ Adds a block that lists yarpp related posts. Also provides an option to display 
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Changelog ==
+
+= 1.1 =
+* Fixed: fatal error if not enough related posts are found.
 
 = 1.0 =
 * Inital version.
