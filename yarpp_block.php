@@ -4,7 +4,7 @@
  * Plugin Name: List YARPP Block
  * Plugin URI: https://marc.tv/
  * Description: YARPP Block 
- * Version: 1.0
+ * Version: 1.1
  * Author: Marc Tönsing
  * Author URI: https://marc.tv
  * Text Domain: yarpp-block
@@ -132,7 +132,7 @@ function getBlocks($attributes)
   }
 
   if (function_exists('yarpp_get_related')) {
-    $posts = yarpp_get_related(array('limit' => 3), $cpid);
+    $posts = yarpp_get_related( array('limit' => 3), $cpid );
   } else {
     if( $is_backend ){
       return '<p class="notice">' . __('YARPP plugin is not installed and activated. ', 'yarpp-block') . '</p>';
@@ -142,7 +142,7 @@ function getBlocks($attributes)
     
   }
 
-  if (count($posts) > 2) {
+  if ( $posts != false && count( $posts ) > 2 ) {
     $html_related = $heading;
     $html_related .= '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
 
@@ -152,6 +152,14 @@ function getBlocks($attributes)
     }
 
     $html_related .= '</ul>';
+  } else {
+
+    if( $is_backend ){
+      return '<p class="notice">' . __('Less than 3 related posts found.', 'yarpp-block') . '</p>';
+    } else {
+      return '';
+    }
+
   }
 
   if ($blocktype == 'related') {
