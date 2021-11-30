@@ -93,7 +93,7 @@ registerBlockType('yarpp-block/list', {
       <ToolbarGroup>
         <ToolbarButton
           className="components-icon-button components-toolbar__control"
-          label={__('Update table of contents', 'yarpp-block')}
+          label={__('Update YARPP Block', 'yarpp-block')}
           onClick={ () => props.setAttributes( { updated: Date.now()} ) }
           icon="update"
         />
