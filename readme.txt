@@ -14,7 +14,7 @@ Adds a block that lists yarpp related posts.
 
 Adds a block that lists yarpp related posts. Also provides an option to display the latest posts without the related posts. Works best with full site editing themes.
 
-This block requires the YARPP plugin: https://wordpress.org/plugins/yet-another-related-posts-plugin/ 
+This block **requires** the [YARPP plugin](https://wordpress.org/plugins/yet-another-related-posts-plugin/) and relies on the *yarpp_get_related()* function.
 
 = Features =
 
