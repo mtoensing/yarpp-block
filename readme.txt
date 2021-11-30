@@ -4,7 +4,7 @@ Tags: Gutenberg, block, yarpp, fse, related posts
 Requires at least: 5.0
 Donate link: https://marc.tv/out/donate
 Tested up to: 5.8.2
-Stable tag: 1.3
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,7 +31,7 @@ This block **requires** the [YARPP plugin](https://wordpress.org/plugins/yet-ano
 
 == Changelog ==
 
-= 1.3 =
+= 1.4 =
 * Added YARPP required notice. 
 
 = 1.2 =
