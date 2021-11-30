@@ -19,7 +19,7 @@ This block **requires** the [YARPP plugin](https://wordpress.org/plugins/yet-ano
 = Features =
 
 * Gutenberg column width support.
-* The block is not visible in the frontend if not related posts are found.
+* The block is not visible in the frontend if no related posts are found.
 * Minimum html and css that is based on the standard Gutenberg Latest Posts block.
 * Valid HTML output.
 * Inherits the style of your theme for links and headlines.
