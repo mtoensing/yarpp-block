@@ -4,7 +4,7 @@
  * Plugin Name: List YARPP Block
  * Plugin URI: https://marc.tv/
  * Description: YARPP Block 
- * Version: 1.4
+ * Version: 1.5
  * Author: Marc Tönsing
  * Author URI: https://marc.tv
  * Text Domain: yarpp-block
@@ -89,6 +89,10 @@ function register_block()
         'type' => 'string',
         'default' => 'h3',
       ),
+      'targetblank' => array(
+        'type' => 'boolean',
+        'default' => false,
+      )
     )
   ]);
 }
@@ -149,7 +153,7 @@ function getBlocks($attributes)
 
     foreach ($posts as $posts) {
       $related_posts_array[] = $posts->ID;
-      $html_related .= render_listitem( $posts->ID );
+      $html_related .= render_listitem( $posts->ID, $attributes );
     }
 
     $html_related .= '</ul>';
@@ -188,7 +192,7 @@ function getBlocks($attributes)
 
     $the_query->the_post();
     if (has_post_thumbnail()) :
-      $html_latestposts .= render_listitem(get_the_ID());
+      $html_latestposts .= render_listitem(get_the_ID(), $attributes);
       $i++;
     endif;
     if ($i > 2) {
@@ -205,9 +209,10 @@ function getBlocks($attributes)
   }
 }
 
-function render_listitem($pid)
+function render_listitem($pid,$attributes)
 {
   $html = '<li>';
+  $params = '';
   $is_backend = defined('REST_REQUEST') && true === REST_REQUEST && 'edit' === filter_input(INPUT_GET, 'context', FILTER_SANITIZE_STRING);
   $href = 'href="' . get_the_permalink($pid) . '"';
 
@@ -215,10 +220,14 @@ function render_listitem($pid)
     $href = '';
   }
 
+  if ($attributes['targetblank']) {
+    $params = ' target="_blank" rel="noopener"';
+  }
+
   $title = get_the_title($pid);
   $img = get_the_post_thumbnail( $pid );
-  $html .= '<div class="wp-block-latest-posts__featured-image"><a ' . $href . ' >' . $img . '</a></div>';
-  $html .= '<a ' . $href . ' >' . $title . '</a>';
+  $html .= '<div class="wp-block-latest-posts__featured-image"><a ' . $href . $params . '>' . $img . '</a></div>';
+  $html .= '<a ' . $href . $params . '>' . $title . '</a>';
   $html .= '</li>';
 
   return $html;

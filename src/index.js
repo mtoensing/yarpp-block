@@ -3,7 +3,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, BlockControls } from '@wordpress/block-editor';
 import ServerSideRender from '@wordpress/server-side-render';
 import { TextControl } from '@wordpress/components';
-import { ToolbarGroup, ToolbarButton, SelectControl ,Panel, PanelBody } from '@wordpress/components';
+import { ToolbarGroup, ToolbarButton, SelectControl, ToggleControl, Panel, PanelBody } from '@wordpress/components';
 
 registerBlockType('yarpp-block/list', {
   title: __('List YARPP Block', 'yarpp_block'),
@@ -37,7 +37,10 @@ registerBlockType('yarpp-block/list', {
     level: {
       type: 'string',
       default: "h3"
-    }
+    },
+    targetblank: {
+      type: 'boolean',
+      default: false    }
 	},
   edit: function(props) {
 
@@ -85,6 +88,12 @@ registerBlockType('yarpp-block/list', {
 							] }
 							onChange={ ( blocktype ) => props.setAttributes( { blocktype: blocktype } ) }
 						/>
+            <ToggleControl
+                label={__('Open links in new tab.', 'yarpp_block')}
+                help={__('Adds target="_blank" and rel="noopener" parameters to the links.', 'yarpp_block')}
+                checked={ props.attributes.targetblank }
+                onChange={ () => props.setAttributes( {  targetblank: ! props.attributes.targetblank } ) }
+            />
           
         </PanelBody>
       </Panel>

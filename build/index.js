@@ -1,1 +1,296 @@
-!function(e){var t={};function l(n){if(t[n])return t[n].exports;var o=t[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,l),o.l=!0,o.exports}l.m=e,l.c=t,l.d=function(e,t,n){l.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:n})},l.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},l.t=function(e,t){if(1&t&&(e=l(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(l.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)l.d(n,o,function(t){return e[t]}.bind(null,o));return n},l.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return l.d(t,"a",t),t},l.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},l.p="",l(l.s=6)}([function(e,t){!function(){e.exports=this.wp.i18n}()},function(e,t){!function(){e.exports=this.wp.element}()},function(e,t){!function(){e.exports=this.wp.components}()},function(e,t){!function(){e.exports=this.wp.blockEditor}()},function(e,t){!function(){e.exports=this.wp.blocks}()},function(e,t){!function(){e.exports=this.wp.serverSideRender}()},function(e,t,l){"use strict";l.r(t);var n=l(1),o=l(0),r=l(4),a=l(3),c=l(5),u=l.n(c),i=l(2);Object(r.registerBlockType)("yarpp-block/list",{title:Object(o.__)("List YARPP Block","yarpp_block"),description:Object(o.__)("Will show 3 related posts or will not appear if no related posts are found."),category:"layout",icon:"ellipsis",supports:{align:["wide","full"]},keywords:["YARPP Block"],attributes:{use_cache:{type:"boolean",default:!1},updated:{type:"number",default:0},blocktype:{type:"string",default:"related"},align:{type:"string"},headline:{type:"string",default:"Related posts"},level:{type:"string",default:"h3"}},edit:function(e){return Object(n.createElement)(n.Fragment,null,Object(n.createElement)(a.InspectorControls,null,Object(n.createElement)(i.Panel,null,Object(n.createElement)(i.PanelBody,null,Object(n.createElement)(i.TextControl,{onChange:function(t){e.setAttributes({headline:t})},className:"headline",label:Object(o.__)("Headline"),value:e.attributes.headline,placeholder:Object(o.__)("Write headline","yarpp_block")}),Object(n.createElement)(i.SelectControl,{label:Object(o.__)("Heading level","yarpp_block"),help:Object(o.__)("Select the heading level","yarpp_block"),value:e.attributes.level,options:[{value:"h1",label:Object(o.__)("H1","yarpp_block")},{value:"h2",label:Object(o.__)("H2","yarpp_block")},{value:"h3",label:Object(o.__)("H3","yarpp_block")},{value:"h4",label:Object(o.__)("H4","yarpp_block")},{value:"h5",label:Object(o.__)("H5","yarpp_block")},{value:"h6",label:Object(o.__)("H6","yarpp_block")}],onChange:function(t){e.setAttributes({level:t})}}),Object(n.createElement)(i.SelectControl,{label:Object(o.__)("YARPP block type","yarpp_block"),help:Object(o.__)("Displays 3 posts of the configured type. ","yarpp_block"),value:e.attributes.blocktype,options:[{value:"related",label:Object(o.__)("Related posts (default)","yarpp_block")},{value:"latest",label:Object(o.__)("Latest posts excluding related posts","yarpp_block")}],onChange:function(t){return e.setAttributes({blocktype:t})}})))),Object(n.createElement)(a.BlockControls,null,Object(n.createElement)(i.ToolbarGroup,null,Object(n.createElement)(i.ToolbarButton,{className:"components-icon-button components-toolbar__control",label:Object(o.__)("Update YARPP Block","yarpp-block"),onClick:function(){return e.setAttributes({updated:Date.now()})},icon:"update"}))),Object(n.createElement)(u.a,{block:e.name,attributes:e.attributes}))},save:function(e){return null}})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./src/index.js":
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/server-side-render */ "@wordpress/server-side-render");
+/* harmony import */ var _wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+
+Object(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_2__["registerBlockType"])('yarpp-block/list', {
+  title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('List YARPP Block', 'yarpp_block'),
+  description: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Will show 3 related posts or will not appear if no related posts are found.'),
+  category: 'layout',
+  icon: 'ellipsis',
+  supports: {
+    align: ['wide', 'full']
+  },
+  keywords: ['YARPP Block'],
+  attributes: {
+    use_cache: {
+      type: 'boolean',
+      default: false
+    },
+    updated: {
+      type: 'number',
+      default: 0
+    },
+    blocktype: {
+      type: 'string',
+      default: 'related'
+    },
+    align: {
+      type: 'string'
+    },
+    headline: {
+      type: 'string',
+      default: "Related posts"
+    },
+    level: {
+      type: 'string',
+      default: "h3"
+    },
+    targetblank: {
+      type: 'boolean',
+      default: false
+    }
+  },
+  edit: function edit(props) {
+    function updateHeadline(newValue) {
+      props.setAttributes({
+        headline: newValue
+      });
+    }
+
+    function updateLevel(newValue) {
+      props.setAttributes({
+        level: newValue
+      });
+    }
+
+    return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["Panel"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["PanelBody"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["TextControl"], {
+      onChange: updateHeadline,
+      className: "headline",
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Headline'),
+      value: props.attributes.headline,
+      placeholder: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Write headline', 'yarpp_block')
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Heading level', 'yarpp_block'),
+      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Select the heading level', 'yarpp_block'),
+      value: props.attributes.level,
+      options: [{
+        value: 'h1',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('H1', 'yarpp_block')
+      }, {
+        value: 'h2',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('H2', 'yarpp_block')
+      }, {
+        value: 'h3',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('H3', 'yarpp_block')
+      }, {
+        value: 'h4',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('H4', 'yarpp_block')
+      }, {
+        value: 'h5',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('H5', 'yarpp_block')
+      }, {
+        value: 'h6',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('H6', 'yarpp_block')
+      }],
+      onChange: updateLevel
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["SelectControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('YARPP block type', 'yarpp_block'),
+      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Displays 3 posts of the configured type. ', 'yarpp_block'),
+      value: props.attributes.blocktype,
+      options: [{
+        value: 'related',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Related posts (default)', 'yarpp_block')
+      }, {
+        value: 'latest',
+        label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Latest posts excluding related posts', 'yarpp_block')
+      }],
+      onChange: function onChange(blocktype) {
+        return props.setAttributes({
+          blocktype: blocktype
+        });
+      }
+    }), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToggleControl"], {
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Open links in new tab.', 'yarpp_block'),
+      help: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Adds target="_blank" and rel="noopener" parameters to the links.', 'yarpp_block'),
+      checked: props.attributes.targetblank,
+      onChange: function onChange() {
+        return props.setAttributes({
+          targetblank: !props.attributes.targetblank
+        });
+      }
+    })))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_3__["BlockControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToolbarGroup"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__["ToolbarButton"], {
+      className: "components-icon-button components-toolbar__control",
+      label: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__["__"])('Update YARPP Block', 'yarpp-block'),
+      onClick: function onClick() {
+        return props.setAttributes({
+          updated: Date.now()
+        });
+      },
+      icon: "update"
+    }))), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__["createElement"])(_wordpress_server_side_render__WEBPACK_IMPORTED_MODULE_4___default.a, {
+      block: props.name,
+      attributes: props.attributes
+    }));
+  },
+  save: function save(props) {
+    return null;
+  }
+});
+
+/***/ }),
+
+/***/ "@wordpress/block-editor":
+/*!**********************************************!*\
+  !*** external {"this":["wp","blockEditor"]} ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["blockEditor"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/blocks":
+/*!*****************************************!*\
+  !*** external {"this":["wp","blocks"]} ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["blocks"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!*********************************************!*\
+  !*** external {"this":["wp","components"]} ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["components"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/element":
+/*!******************************************!*\
+  !*** external {"this":["wp","element"]} ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["element"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!***************************************!*\
+  !*** external {"this":["wp","i18n"]} ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["i18n"]; }());
+
+/***/ }),
+
+/***/ "@wordpress/server-side-render":
+/*!***************************************************!*\
+  !*** external {"this":["wp","serverSideRender"]} ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["serverSideRender"]; }());
+
+/***/ })
+
+/******/ });
+//# sourceMappingURL=index.js.map
