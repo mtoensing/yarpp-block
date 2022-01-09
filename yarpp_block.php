@@ -131,7 +131,8 @@ function getBlocks($attributes)
     $heading = '<' . $level . ' class="' . $alignclass .  '">' . $headline . '</' . $level . '>';
   }
 
-  if (function_exists('yarpp_get_related')) {
+  /* Is YARPP installed?  */
+  if ( function_exists( 'yarpp_get_related' ) ) {
     $posts = yarpp_get_related( array('limit' => 3), $cpid );
   } else {
     if( $is_backend ){
@@ -139,21 +140,21 @@ function getBlocks($attributes)
     } else {
       return '';
     }
-    
   }
 
+  /* Enough posts available?  */
   if ( $posts != false && count( $posts ) > 2 ) {
     $html_related = $heading;
     $html_related .= '<ul class="' . $alignclass .  ' wp-block-latest-posts__list is-grid columns-3 wp-block-latest-posts">';
 
     foreach ($posts as $posts) {
       $related_posts_array[] = $posts->ID;
-      $html_related .= render_listitem($posts->ID);
+      $html_related .= render_listitem( $posts->ID );
     }
 
     $html_related .= '</ul>';
-  } else {
 
+  } else {
     if( $is_backend ){
       return '<p class="notice">' . __('Less than 3 related posts found.', 'yarpp-block') . '</p>';
     } else {
