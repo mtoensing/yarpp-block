@@ -214,10 +214,11 @@ function render_listitem($pid,$attributes)
   $html = '<li>';
   $params = '';
   $is_backend = defined('REST_REQUEST') && true === REST_REQUEST && 'edit' === filter_input(INPUT_GET, 'context', FILTER_SANITIZE_STRING);
-  $href = 'href="' . get_the_permalink($pid) . '"';
+  $tag = 'a';
+  $url = get_the_permalink( $pid );
 
   if ($is_backend) {
-    $href = '';
+    $tag = 'span';
   }
 
   if ($attributes['targetblank']) {
@@ -226,8 +227,8 @@ function render_listitem($pid,$attributes)
 
   $title = get_the_title($pid);
   $img = get_the_post_thumbnail( $pid );
-  $html .= '<div class="wp-block-latest-posts__featured-image"><a ' . $href . $params . '>' . $img . '</a></div>';
-  $html .= '<a ' . $href . $params . '>' . $title . '</a>';
+  $html .= '<div class="wp-block-latest-posts__featured-image"><a href="' . $url .'"'. $params . '>' . $img . '</a></div>';
+  $html .= '<'.$tag.' href="' . $url .  $params . '>' . $title . '</'.$tag.'>';
   $html .= '</li>';
 
   return $html;
