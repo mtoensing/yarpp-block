@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@wordpress/i18n": "^4.2.4",
-    "@wordpress/server-side-render": "^3.0.17",
-    "postcss": ">=8.2.13"
+    "@wordpress/server-side-render": "^3.0.17"
   }
 }
