@@ -232,7 +232,7 @@ function render_listitem($pid, $attributes)
   $title = get_the_title($pid);
   $img = get_the_post_thumbnail( $pid, array( 320, 0) );
   $html .= '<div class="wp-block-latest-posts__featured-image"><a href="' . $url .'"'. $params . '>' . $img . '</a></div>';
-  $html .= '<'.$tag.' href="' . $url .  $params . '>' . $title . '</'.$tag.'>';
+  $html .= '<'.$tag.' href="' . $url .  $params . '">' . $title . '</'.$tag.'>';
   $html .= '</li>';
 
   return $html;
