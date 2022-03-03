@@ -40,7 +40,12 @@ registerBlockType('yarpp-block/list', {
     },
     targetblank: {
       type: 'boolean',
-      default: false    }
+      default: false    
+    },
+    imgsize: {
+      type: 'number',
+      default: 300    
+    }
 	},
   edit: function(props) {
 
@@ -50,6 +55,10 @@ registerBlockType('yarpp-block/list', {
 
     function updateLevel( newValue ) {
       props.setAttributes( { level: newValue } );
+    }
+
+    function updateImagesize( newValue ) {
+      props.setAttributes( { imgsize: newValue } );
     }
 
     return (
@@ -63,6 +72,14 @@ registerBlockType('yarpp-block/list', {
               label={ __( 'Headline' ) }
               value={ props.attributes.headline }
               placeholder={ __( 'Write headline', 'yarpp_block' ) }
+            />
+             <TextControl 
+              onChange={ updateImagesize }
+              className="imgsize"
+              label={ __( 'Image size' ) }
+              type='number'
+              value={ props.attributes.imgsize }
+              placeholder={ __( 'Image size', 'yarpp_block' ) }
             />
             <SelectControl
 							label={ __('Heading level', 'yarpp_block') }
