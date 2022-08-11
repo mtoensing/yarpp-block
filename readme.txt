@@ -1,10 +1,10 @@
 === List YARPP Block ===
 Contributors: MarcDK
-Tags: Gutenberg, block, yarpp, fse, related posts
+Tags: Gutenberg, block, yarpp, full-site-editing, related posts
 Requires at least: 5.9
 Donate link: https://marc.tv/out/donate
 Tested up to: 5.9
-Stable tag: 1.6
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,9 @@ This block **requires** the [YARPP plugin](https://wordpress.org/plugins/yet-ano
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Changelog ==
+
+= 1.7 =
+* Feature: Automatic WordPress repository deployment with GitHub actions.
 
 = 1.5 =
 * Feature: Added option to open links in new tab.
