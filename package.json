@@ -1,6 +1,6 @@
 {
   "name": "yarpp-block",
-  "version": "1.0.0",
+  "version": "1.7.0",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -12,10 +12,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@wordpress/scripts": "^22.1.0"
+    "@wordpress/scripts": "^23.7.0"
   },
   "dependencies": {
-    "@wordpress/i18n": "^4.3.1",
-    "@wordpress/server-side-render": "^3.1.3"
+    "@wordpress/i18n": "^4.15.0",
+    "@wordpress/server-side-render": "^3.13.0"
   }
 }
