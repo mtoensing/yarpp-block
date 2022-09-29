@@ -113,7 +113,7 @@ export default function Edit( { attributes, setAttributes } ) {
 							] }
 							onChange={ ( blocktype ) =>
 								setAttributes( {
-									blocktype: blocktype,
+									blocktype,
 								} )
 							}
 						/>
