@@ -16,6 +16,10 @@ Adds a block that lists yarpp related posts. Also provides an option to display 
 
 This block **requires** the [YARPP plugin](https://wordpress.org/plugins/yet-another-related-posts-plugin/) and relies on the *yarpp_get_related()* function.
 
+[![Coding Standards](https://github.com/mtoensing/list-yarpp-block/actions/workflows/codingstandard.yml/badge.svg)](https://github.com/mtoensing/list-yarpp-block/actions/workflows/codingstandard.yml)
+
+[![Deploy to WordPress.org](https://github.com/mtoensing/list-yarpp-block/actions/workflows/deploy.yml/badge.svg)](https://github.com/mtoensing/list-yarpp-block/actions/workflows/deploy.yml)
+
 = Features =
 
 * Gutenberg column width support.
