@@ -8,7 +8,7 @@ import Edit from './edit';
 import save from './save';
 
 registerBlockType( metadata, {
-	icon: ellipsis,
+	icon: "ellipsis",
 	/**
 	 * @see ./edit.js
 	 */

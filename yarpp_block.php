@@ -13,18 +13,20 @@
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-function register_list_yarpp_block_block()
+
+
+function register_list_yarpp_block()
 {
 
   wp_set_script_translations( 'list-yarpp-block-toc-editor-script', 'list-yarpp-block' );
 
   register_block_type( __DIR__ . '/build', [
-    'render_callback' => __NAMESPACE__ . '\\render_callback'
+    'render_callback' => 'render_list_yarpp_block'
   ]);
 
 }
 
-add_action( 'init', 'register_list_yarpp_block_block' );
+add_action( 'init', 'register_list_yarpp_block' );
 
 
 /**
@@ -32,7 +34,7 @@ add_action( 'init', 'register_list_yarpp_block_block' );
  *
  */
 
-function render_callback($attributes, $content)
+function render_list_yarpp_block($attributes, $content)
 {
 
   $block = getBlocks($attributes);

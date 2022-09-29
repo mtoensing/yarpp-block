@@ -305,7 +305,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_1__, {
-  icon: ellipsis,
+  icon: "ellipsis",
 
   /**
    * @see ./edit.js
