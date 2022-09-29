@@ -38,61 +38,61 @@ export default function Edit( { attributes, setAttributes } ) {
 						<TextControl
 							onChange={ updateHeadline }
 							className="headline"
-							label={ __( 'Headline' ) }
+							label={ __( 'Headline','list-yarpp-block' ) }
 							value={ attributes.headline }
 							placeholder={ __(
 								'Write headline',
-								'yarpp_block'
+								'list-yarpp-block'
 							) }
 						/>
 						<TextControl
 							onChange={ updateImagesize }
 							className="imgsize"
-							label={ __( 'Image size' ) }
+							label={ __( 'Image size', 'list-yarpp-block') }
 							type="number"
 							value={ attributes.imgsize }
-							placeholder={ __( 'Image size', 'yarpp_block' ) }
+							placeholder={ __( 'Image size', 'list-yarpp-block' ) }
 						/>
 						<SelectControl
-							label={ __( 'Heading level', 'yarpp_block' ) }
+							label={ __( 'Heading level', 'list-yarpp-block' ) }
 							help={ __(
 								'Select the heading level',
-								'yarpp_block'
+								'list-yarpp-block'
 							) }
 							value={ attributes.level }
 							options={ [
 								{
 									value: 'h1',
-									label: __( 'H1', 'yarpp_block' ),
+									label: __( 'H1', 'list-yarpp-block' ),
 								},
 								{
 									value: 'h2',
-									label: __( 'H2', 'yarpp_block' ),
+									label: __( 'H2', 'list-yarpp-block' ),
 								},
 								{
 									value: 'h3',
-									label: __( 'H3', 'yarpp_block' ),
+									label: __( 'H3', 'list-yarpp-block' ),
 								},
 								{
 									value: 'h4',
-									label: __( 'H4', 'yarpp_block' ),
+									label: __( 'H4', 'list-yarpp-block' ),
 								},
 								{
 									value: 'h5',
-									label: __( 'H5', 'yarpp_block' ),
+									label: __( 'H5', 'list-yarpp-block' ),
 								},
 								{
 									value: 'h6',
-									label: __( 'H6', 'yarpp_block' ),
+									label: __( 'H6', 'list-yarpp-block' ),
 								},
 							] }
 							onChange={ updateLevel }
 						/>
 						<SelectControl
-							label={ __( 'YARPP block type', 'yarpp_block' ) }
+							label={ __( 'YARPP block type', 'list-yarpp-block' ) }
 							help={ __(
 								'Displays 3 posts of the configured type. ',
-								'yarpp_block'
+								'list-yarpp-block'
 							) }
 							value={ attributes.blocktype }
 							options={ [
@@ -100,14 +100,14 @@ export default function Edit( { attributes, setAttributes } ) {
 									value: 'related',
 									label: __(
 										'Related posts (default)',
-										'yarpp_block'
+										'list-yarpp-block'
 									),
 								},
 								{
 									value: 'latest',
 									label: __(
 										'Latest posts excluding related posts',
-										'yarpp_block'
+										'list-yarpp-block'
 									),
 								},
 							] }
@@ -120,11 +120,11 @@ export default function Edit( { attributes, setAttributes } ) {
 						<ToggleControl
 							label={ __(
 								'Open links in new tab.',
-								'yarpp_block'
+								'list-yarpp-block'
 							) }
 							help={ __(
 								'Adds target="_blank" and rel="noopener" parameters to the links.',
-								'yarpp_block'
+								'list-yarpp-block'
 							) }
 							checked={ attributes.targetblank }
 							onChange={ () =>
@@ -140,7 +140,7 @@ export default function Edit( { attributes, setAttributes } ) {
 				<ToolbarGroup>
 					<ToolbarButton
 						className="components-icon-button components-toolbar__control"
-						label={ __( 'Update YARPP Block', 'yarpp-block' ) }
+						label={ __( 'Update YARPP Block', 'list-yarpp-block' ) }
 						onClick={ () =>
 							setAttributes( { updated: Date.now() } )
 						}

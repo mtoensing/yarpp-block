@@ -4,7 +4,7 @@
  * Plugin Name: List YARPP Block
  * Plugin URI: https://marc.tv/
  * Description: YARPP Block 
- * Version: 1.8
+ * Version: 1.9
  * Author: Marc Tönsing
  * Author URI: https://marc.tv
  * Text Domain: list-yarpp-block
@@ -72,7 +72,7 @@ function getBlocks($attributes)
     $posts = yarpp_get_related( array('limit' => 3), $cpid );
   } else {
     if( $is_backend ){
-      return '<p class="notice">' . __('YARPP plugin is not installed and activated. ', 'yarpp-block') . '</p>';
+      return '<p class="notice">' . __('YARPP plugin is not installed and activated. ', 'list-yarpp-block') . '</p>';
     } else {
       return '';
     }
