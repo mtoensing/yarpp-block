@@ -38,7 +38,7 @@ export default function Edit( { attributes, setAttributes } ) {
 						<TextControl
 							onChange={ updateHeadline }
 							className="headline"
-							label={ __( 'Headline','list-yarpp-block' ) }
+							label={ __( 'Headline', 'list-yarpp-block' ) }
 							value={ attributes.headline }
 							placeholder={ __(
 								'Write headline',
@@ -48,10 +48,13 @@ export default function Edit( { attributes, setAttributes } ) {
 						<TextControl
 							onChange={ updateImagesize }
 							className="imgsize"
-							label={ __( 'Image size', 'list-yarpp-block') }
+							label={ __( 'Image size', 'list-yarpp-block' ) }
 							type="number"
 							value={ attributes.imgsize }
-							placeholder={ __( 'Image size', 'list-yarpp-block' ) }
+							placeholder={ __(
+								'Image size',
+								'list-yarpp-block'
+							) }
 						/>
 						<SelectControl
 							label={ __( 'Heading level', 'list-yarpp-block' ) }
@@ -89,7 +92,10 @@ export default function Edit( { attributes, setAttributes } ) {
 							onChange={ updateLevel }
 						/>
 						<SelectControl
-							label={ __( 'YARPP block type', 'list-yarpp-block' ) }
+							label={ __(
+								'YARPP block type',
+								'list-yarpp-block'
+							) }
 							help={ __(
 								'Displays 3 posts of the configured type. ',
 								'list-yarpp-block'
