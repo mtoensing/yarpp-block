@@ -3,6 +3,6 @@
  * be combined into the final markup, which is then serialized by the block
  * editor into `post_content`.
  */
- export default function save() {
+export default function save() {
 	return null;
 }

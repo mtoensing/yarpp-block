@@ -1,7 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks';
 import metadata from './block.json';
 
-
 /**
  * Internal dependencies
  */

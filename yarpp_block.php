@@ -7,99 +7,25 @@
  * Version: 1.8
  * Author: Marc Tönsing
  * Author URI: https://marc.tv
- * Text Domain: yarpp-block
+ * Text Domain: list-yarpp-block
  * Domain Path: /languages
  * License: GPL v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace YARPPBlock;
-
-defined('ABSPATH') || exit;
-
-/**
- * Initalise frontend and backend and register block
- **/
-add_action('init', __NAMESPACE__ . '\\init');
-add_action('init', __NAMESPACE__ . '\\register_block');
-
-/* Init yarpp-block */
-function init()
+function register_list_yarpp_block_block()
 {
-  wp_register_script(
-    'yarpp-block-js',
-    plugins_url('build/index.js', __FILE__),
-    ['wp-i18n', 'wp-blocks', 'wp-editor', 'wp-element', 'wp-server-side-render'],
-    filemtime(plugin_dir_path(__FILE__) . 'build/index.js')
-  );
 
+  wp_set_script_translations( 'list-yarpp-block-toc-editor-script', 'list-yarpp-block' );
 
-  wp_register_style(
-    'yarpp-block-frontend',
-    plugins_url('style.css', __FILE__),
-    array(),
-    filemtime(plugin_dir_path(__FILE__) . 'style.css')
-  );
-
-  wp_set_script_translations('yarpp-block-js', 'yarpp-block');
-}
-
-
-/**
- * Registers all block assets so that they can be enqueued through Gutenberg in
- * the corresponding context.
- *
- */
-
-function register_block()
-{
-  if (!function_exists('register_block_type')) {
-    // Gutenberg is not active.
-    return;
-  }
-
-  register_block_type('yarpp-block/list', [
-    'editor_script' => 'yarpp-block-js',
-    'editor_style' => 'yarpp-block-editor',
-    'style' => 'yarpp-block-frontend',
-    'render_callback' => __NAMESPACE__ . '\\render_callback',
-    'attributes' => array(
-      'use_cache' => array(
-        'type' => 'boolean',
-        'default' => false,
-      ),
-      'updated' => array(
-        'type' => 'number',
-        'default' => 0,
-        '_builtIn' => true,
-      ),
-      'blocktype' => array(
-        'type' => 'string',
-        'default' => 'related',
-      ),
-      'align' => array(
-        'type' => 'string',
-        'default' => '',
-      ),
-      'headline' => array(
-        'type' => 'string',
-        'default' => 'Related posts',
-      ),
-      'level' => array(
-        'type' => 'string',
-        'default' => 'h3',
-      ),
-      'targetblank' => array(
-        'type' => 'boolean',
-        'default' => false,
-      ),
-      'imgsize' => array(
-        'type' => 'number',
-        'default' => 320,
-      ),
-    )
+  register_block_type( __DIR__ . '/build', [
+    'render_callback' => __NAMESPACE__ . '\\render_callback'
   ]);
+
 }
+
+add_action( 'init', 'register_list_yarpp_block_block' );
+
 
 /**
  * Render block output 

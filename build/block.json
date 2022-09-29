@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "yarpp-block/list",
+  "version": "3.0.0",
+  "title": "List YARPP Block",
+  "category": "layout",
+  "icon": "ellipsis",
+  "description": "Will show 3 related posts or will not appear if no related posts are found.",
+  "supports": {
+    "align": [
+      "wide",
+      "full"
+    ]
+  },
+  "attributes": {
+    "use_cache": {
+      "type": "boolean",
+      "default": false
+    },
+    "updated": {
+      "type": "number",
+      "default": 0
+    },
+    "blocktype": {
+      "type": "string",
+      "default": "related"
+    },
+    "align": {
+      "type": "string"
+    },
+    "headline": {
+      "type": "string",
+      "default": "Related posts"
+    },
+    "level": {
+      "type": "string",
+      "default": "h3"
+    },
+    "targetblank": {
+      "type": "boolean",
+      "default": false
+    },
+    "imgsize": {
+      "type": "number",
+      "default": 300
+    }
+  },
+  "textdomain": "list-yarpp-block",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

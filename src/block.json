@@ -28,7 +28,7 @@
 		},
 		"headline": {
 			"type": "string",
-        	"default": "Related posts"
+			"default": "Related posts"
 		},
 		"level": {
 			"type": "string",
