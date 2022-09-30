@@ -4,7 +4,7 @@
  * Plugin Name: List YARPP Block
  * Plugin URI: https://marc.tv/
  * Description: YARPP Block 
- * Version: 2.0
+ * Version: 2.1
  * Author: Marc Tönsing
  * Author URI: https://marc.tv
  * Text Domain: list-yarpp-block
@@ -18,7 +18,7 @@
 function register_list_yarpp_block()
 {
 
-  wp_set_script_translations( 'list-yarpp-block-toc-editor-script', 'list-yarpp-block' );
+  wp_set_script_translations( 'yarpp-block-list-editor-script', 'list-yarpp-block' );
 
   register_block_type( __DIR__ . '/build', [
     'render_callback' => 'render_list_yarpp_block'
