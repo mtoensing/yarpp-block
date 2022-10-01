@@ -4,7 +4,7 @@ Tags: Gutenberg, block, yarpp, full-site-editing, related posts
 Requires at least: 5.9
 Donate link: https://marc.tv/out/donate
 Tested up to: 6.0
-Stable tag: 2.1
+Stable tag: 2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,8 +31,11 @@ This block **requires** the [YARPP plugin](https://wordpress.org/plugins/yet-ano
 
 == Changelog ==
 
+= 2.2 =
+Fix: Target blank broken link
+Fix: image width won't be saved.
+
 = 2.1 =
-* Fix: Translations
 * Feature: New coding standards
 * Feature: Automatic WordPress repository deployment with GitHub actions.
 

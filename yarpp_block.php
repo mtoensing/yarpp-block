@@ -4,7 +4,7 @@
  * Plugin Name: List YARPP Block
  * Plugin URI: https://marc.tv/
  * Description: YARPP Block 
- * Version: 2.1
+ * Version: 2.2
  * Author: Marc Tönsing
  * Author URI: https://marc.tv
  * Text Domain: list-yarpp-block
@@ -160,7 +160,7 @@ function render_listitem($pid, $attributes)
   $title = get_the_title($pid);
   $img = get_the_post_thumbnail( $pid, array( $attributes['imgsize'], 0) );
   $html .= '<div class="wp-block-latest-posts__featured-image"><a href="' . $url .'"'. $params . '>' . $img . '</a></div>';
-  $html .= '<'.$tag.' href="' . $url .  $params . '">' . $title . '</'.$tag.'>';
+  $html .= '<'.$tag.' href="' . $url .'"'.  $params . '>' . $title . '</'.$tag.'>';
   $html .= '</li>';
 
   return $html;

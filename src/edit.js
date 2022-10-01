@@ -27,7 +27,7 @@ export default function Edit( { attributes, setAttributes } ) {
 	}
 
 	function updateImagesize( newValue ) {
-		setAttributes( { imgsize: newValue } );
+		setAttributes( { imgsize: parseInt(newValue) } );
 	}
 
 	return (
