@@ -3,8 +3,8 @@ Contributors: MarcDK
 Tags: Gutenberg, block, yarpp, full-site-editing, related posts
 Requires at least: 5.9
 Donate link: https://marc.tv/out/donate
-Tested up to: 6.0
-Stable tag: 2.2
+Tested up to: 6.7
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,6 +30,9 @@ This block **requires** the [YARPP plugin](https://wordpress.org/plugins/yet-ano
 1. Activate the plugin through the 'Plugins' screen in WordPress
 
 == Changelog ==
+
+= 2.3 = 
+Fix: Image width set to auto.
 
 = 2.2 =
 Fix: Target blank broken link
