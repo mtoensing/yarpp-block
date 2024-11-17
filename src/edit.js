@@ -97,7 +97,7 @@ export default function Edit( { attributes, setAttributes } ) {
 								'list-yarpp-block'
 							) }
 							help={ __(
-								'Displays 3 posts of the configured type. ',
+								'Displays 3 posts of the configured type.',
 								'list-yarpp-block'
 							) }
 							value={ attributes.blocktype }
