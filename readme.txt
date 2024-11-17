@@ -4,7 +4,7 @@ Tags: Gutenberg, block, yarpp, full-site-editing, related posts
 Requires at least: 5.9
 Donate link: https://marc.tv/out/donate
 Tested up to: 6.7
-Stable tag: 2.3
+Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Adds a block that lists yarpp related posts.
 
 == Description ==
 
-Adds a block that lists yarpp related posts. Also provides an option to display the latest posts without the related posts. Works best with full site editing themes.
+Adds a block that lists yarpp related posts in Twenty-Twenty-Three. Also provides an option to display the latest posts without the related posts. Works best with full site editing themes.
 
 This block **requires** the [YARPP plugin](https://wordpress.org/plugins/yet-another-related-posts-plugin/) and relies on the *yarpp_get_related()* function.
 
