@@ -30,12 +30,12 @@
 	"keywords": [],
 	"author": "",
 	"devDependencies": {
-		"@wordpress/env": "^10.12.0",
-		"@wordpress/icons": "^10.12.0",
-		"@wordpress/scripts": "30.5.0"
+		"@wordpress/env": "^10.14.0",
+		"@wordpress/icons": "^10.14.0",
+		"@wordpress/scripts": "^30.7.0"
 	},
 	"dependencies": {
-		"@wordpress/i18n": "^5.12.0",
-		"@wordpress/server-side-render": "^5.12.0"
+		"@wordpress/i18n": "^5.14.0",
+		"@wordpress/server-side-render": "^5.14.0"
 	}
 }
